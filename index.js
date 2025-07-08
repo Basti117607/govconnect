@@ -84,9 +84,9 @@ const projects = [
 // ===================================================================
 let currentUser = users[0];
 let projectsToSwipe = [...projects];
-let interestedProjects: any[] = []; // Projects user swiped right on
-let dislikedProjects: any[] = []; // Projects user swiped left on
-let swipedProjects: any[] = []; // All projects user swiped on
+let interestedProjects = []; // Projects user swiped right on
+let dislikedProjects = []; // Projects user swiped left on
+let swipedProjects = []; // All projects user swiped on
 
 // ===================================================================
 // DOM ELEMENTS
@@ -116,7 +116,7 @@ const fileUploadList = document.getElementById('file-upload-list');
  * @param {string[]} items - Array of strings (skills or interests).
  * @returns {string} - HTML string of pill elements.
  */
-const renderPills = (items: string[]) => {
+const renderPills = (items) => {
     if (!items || items.length === 0) return '<p class="text-gray-500">Keine Angaben.</p>';
     return items.map(item => `<span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 mb-2 px-2.5 py-1 rounded-full">${item}</span>`).join('');
 };
@@ -355,7 +355,7 @@ const renderReconsider = () => {
  * Shows the project detail modal with information about a specific project.
  * @param {number} projectId The ID of the project to show.
  */
-const showProjectDetailsModal = (projectId: number) => {
+const showProjectDetailsModal = (projectId) => {
     const project = projects.find(p => p.id === projectId);
     if (!project || !projectDetailModalContent || !projectDetailModalContainer) return;
 
@@ -399,14 +399,17 @@ const showProjectDetailsModal = (projectId: number) => {
  * Switches the visible view.
  * @param {string} viewId - The ID of the view to show.
  */
-const switchView = (viewId: string) => {
+const switchView = (viewId) => {
     views.forEach(view => {
         view.classList.add('hidden');
     });
-    document.getElementById(viewId)?.classList.remove('hidden');
+    const viewElement = document.getElementById(viewId);
+    if (viewElement) {
+        viewElement.classList.remove('hidden');
+    }
 
     navLinks.forEach(link => {
-        if ((link as HTMLElement).dataset.view === viewId) {
+        if (link.dataset.view === viewId) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
@@ -423,21 +426,21 @@ const switchView = (viewId: string) => {
     }
     
     // Close mobile menu on navigation
-    (mobileMenu as HTMLElement).classList.add('hidden');
+    mobileMenu.classList.add('hidden');
 };
 
 /**
  * Handles the logic for a swipe action.
  * @param {boolean} liked - True if the user liked the project, false otherwise.
  */
-const handleSwipe = (liked: boolean) => {
+const handleSwipe = (liked) => {
     const topCard = document.querySelector('.project-card:last-of-type');
     const currentProject = projectsToSwipe[0];
     if (!topCard || !currentProject) return;
 
     // Prevent multiple clicks
     const swipeButtons = document.querySelectorAll('.swipe-btn');
-    swipeButtons.forEach(btn => (btn as HTMLButtonElement).disabled = true);
+    swipeButtons.forEach(btn => btn.disabled = true);
 
     const swipeClass = liked ? 'swipe-right' : 'swipe-left';
     topCard.classList.add(swipeClass);
@@ -460,7 +463,7 @@ const handleSwipe = (liked: boolean) => {
  * Moves a disliked project back to the swipe queue.
  * @param {number} projectId The ID of the project to reconsider.
  */
-const handleReconsiderProject = (projectId: number) => {
+const handleReconsiderProject = (projectId) => {
     const projectIndex = dislikedProjects.findIndex(p => p.id === projectId);
     if (projectIndex === -1) return;
 
@@ -482,7 +485,7 @@ const handleReconsiderProject = (projectId: number) => {
  * Moves a disliked project directly to the interested list.
  * @param {number} projectId The ID of the project to like.
  */
-const handleLikeProjectFromReconsider = (projectId: number) => {
+const handleLikeProjectFromReconsider = (projectId) => {
     const projectIndex = dislikedProjects.findIndex(p => p.id === projectId);
     if (projectIndex === -1) return;
 
@@ -497,7 +500,7 @@ const handleLikeProjectFromReconsider = (projectId: number) => {
  * Toggles the visibility of the "Create Project" modal.
  * @param {boolean} show - True to show the modal, false to hide it.
  */
-const toggleModal = (show: boolean) => {
+const toggleModal = (show) => {
     if (show) {
         modalContainer.classList.remove('hidden');
     } else {
@@ -509,7 +512,7 @@ const toggleModal = (show: boolean) => {
  * Resets the create project form and file list.
  */
 const resetCreateProjectForm = () => {
-    const form = document.getElementById('create-project-form') as HTMLFormElement;
+    const form = document.getElementById('create-project-form');
     if (form) {
         form.reset();
     }
@@ -531,7 +534,7 @@ const init = () => {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const viewId = (e.currentTarget as HTMLElement).dataset.view;
+            const viewId = e.currentTarget.dataset.view;
             if (viewId) {
                 switchView(viewId);
             }
@@ -545,19 +548,19 @@ const init = () => {
 
     // Event delegation for various views
     document.body.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
+        const target = e.target;
 
         // Reconsider view buttons
         const reconsiderBtn = target.closest('.reconsider-btn');
         if (reconsiderBtn) {
-            const projectId = parseInt((reconsiderBtn as HTMLElement).dataset.projectId, 10);
+            const projectId = parseInt(reconsiderBtn.dataset.projectId, 10);
             handleReconsiderProject(projectId);
             return;
         }
 
         const likeFromReconsiderBtn = target.closest('.like-from-reconsider-btn');
         if (likeFromReconsiderBtn) {
-            const projectId = parseInt((likeFromReconsiderBtn as HTMLElement).dataset.projectId, 10);
+            const projectId = parseInt(likeFromReconsiderBtn.dataset.projectId, 10);
             handleLikeProjectFromReconsider(projectId);
             return;
         }
@@ -565,7 +568,7 @@ const init = () => {
         // Matches view "view details" button
         const viewDetailsBtn = target.closest('.view-details-btn');
         if (viewDetailsBtn) {
-            const projectId = parseInt((viewDetailsBtn as HTMLElement).dataset.projectId, 10);
+            const projectId = parseInt(viewDetailsBtn.dataset.projectId, 10);
             showProjectDetailsModal(projectId);
             return;
         }
@@ -608,7 +611,7 @@ const init = () => {
 
     // File Upload Logic
     if(dropZone && fileUploadInput && fileUploadList) {
-        const handleFiles = (files: FileList) => {
+        const handleFiles = (files) => {
             fileUploadList.innerHTML = ''; // Clear previous list
             if (files.length > 0) {
                 const file = files[0];
@@ -618,26 +621,26 @@ const init = () => {
 
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
-            (dropZone as HTMLElement).classList.add('border-blue-500', 'bg-blue-50');
+            dropZone.classList.add('border-blue-500', 'bg-blue-50');
         });
 
         dropZone.addEventListener('dragleave', (e) => {
             e.preventDefault();
-            (dropZone as HTMLElement).classList.remove('border-blue-500', 'bg-blue-50');
+            dropZone.classList.remove('border-blue-500', 'bg-blue-50');
         });
 
         dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
-            (dropZone as HTMLElement).classList.remove('border-blue-500', 'bg-blue-50');
-            const files = (e as DragEvent).dataTransfer?.files;
+            dropZone.classList.remove('border-blue-500', 'bg-blue-50');
+            const files = e.dataTransfer?.files;
             if (files && files.length > 0) {
-                (fileUploadInput as HTMLInputElement).files = files;
+                fileUploadInput.files = files;
                 handleFiles(files);
             }
         });
         
         fileUploadInput.addEventListener('change', (e) => {
-            const files = (e.target as HTMLInputElement).files;
+            const files = e.target.files;
             if (files) {
                 handleFiles(files);
             }
