@@ -1,0 +1,47 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom classes for view transitions, if needed */
+.view {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Active navigation link style */
+.nav-link.active, .nav-link.active:hover {
+    background-color: #DBEAFE; /* bg-blue-100 */
+    color: #1D4ED8; /* text-blue-700 */
+    font-weight: 600;
+}
+
+
+/* Project card styling */
+.project-card {
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease-out;
+    cursor: grab;
+}
+
+.project-card:active {
+    cursor: grabbing;
+}
+
+
+/* Swipe animation classes */
+.project-card.swiping {
+    transition: transform 0.2s ease-out;
+}
+
+.project-card.swipe-left {
+    transform: translateX(-150%) rotate(-30deg) !important;
+    opacity: 0;
+}
+
+.project-card.swipe-right {
+    transform: translateX(150%) rotate(30deg) !important;
+    opacity: 0;
+}

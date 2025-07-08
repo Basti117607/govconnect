@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GovConnect - BMI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+    <div id="app-container" class="min-h-screen flex flex-col">
+
+        <!-- Header & Navigation -->
+        <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                             <span class="text-2xl font-bold text-gray-800">Gov<span class="text-blue-600">Connect</span></span>
+                        </div>
+                        <div class="hidden md:block">
+                            <nav class="ml-10 flex items-baseline space-x-1">
+                                <a href="#" data-view="dashboard-view" class="nav-link flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-colors"><span>🏠</span><span>Dashboard</span></a>
+                                <a href="#" data-view="swipe-view" class="nav-link flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-colors"><span>❤️</span><span>Projekte finden</span></a>
+                                <a href="#" data-view="matches-view" class="nav-link flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-colors"><span>🤝</span><span>Matches</span></a>
+                                <a href="#" data-view="profile-view" class="nav-link flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-colors"><span>👤</span><span>Mein Profil</span></a>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="hidden md:block">
+                        <button id="create-project-btn" class="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors">
+                            <span>✨</span>
+                            <span>Projekt erstellen</span>
+                        </button>
+                    </div>
+                     <div class="md:hidden">
+                        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                            <span class="sr-only">Menü öffnen</span>
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                 <div id="mobile-menu" class="md:hidden hidden pb-3 px-2 pt-2 space-y-1">
+                    <a href="#" data-view="dashboard-view" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"><span>🏠</span><span>Dashboard</span></a>
+                    <a href="#" data-view="swipe-view" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"><span>❤️</span><span>Projekte finden</span></a>
+                    <a href="#" data-view="matches-view" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"><span>🤝</span><span>Matches</span></a>
+                    <a href="#" data-view="profile-view" class="nav-link flex items-center space-x-3 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"><span>👤</span><span>Mein Profil</span></a>
+                    <div class="border-t border-gray-200 !my-2"></div>
+                    <button id="create-project-btn-mobile" class="w-full flex items-center justify-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors">
+                        <span>✨</span>
+                        <span>Projekt erstellen</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <!-- Dashboard View -->
+            <div id="dashboard-view" class="view p-4 md:p-8 max-w-7xl mx-auto"></div>
+
+            <!-- Swipe View -->
+            <div id="swipe-view" class="view hidden p-4 md:p-8 max-w-lg mx-auto flex flex-col items-center justify-center h-full"></div>
+            
+            <!-- Profile View -->
+            <div id="profile-view" class="view hidden p-4 md:p-8 max-w-4xl mx-auto"></div>
+
+            <!-- Matches View -->
+            <div id="matches-view" class="view hidden p-4 md:p-8 max-w-4xl mx-auto"></div>
+
+            <!-- Reconsider View -->
+            <div id="reconsider-view" class="view hidden p-4 md:p-8 max-w-4xl mx-auto"></div>
+        </main>
+        
+        <!-- Create Project Modal -->
+        <div id="modal-container" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">
+            <div id="modal-content" class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-full overflow-y-auto p-6 md:p-8 relative">
+                <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Neues Projekt anlegen</h2>
+                <form id="create-project-form" class="space-y-4">
+                    <div>
+                        <label for="projektname" class="block text-sm font-medium text-gray-700">Projektname</label>
+                        <input type="text" id="projektname" class="bg-white mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                     <div>
+                        <label for="abteilung" class="block text-sm font-medium text-gray-700">Abteilung / Referat</label>
+                        <input type="text" id="abteilung" class="bg-white mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="beschreibung" class="block text-sm font-medium text-gray-700">Kurzbeschreibung</label>
+                        <textarea id="beschreibung" rows="4" class="bg-white mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                    </div>
+                    <div>
+                        <label for="skills" class="block text-sm font-medium text-gray-700">Benötigte Skills (Komma-getrennt)</label>
+                        <input type="text" id="skills" class="bg-white mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                           <label for="aufwand" class="block text-sm font-medium text-gray-700">Geschätzter Aufwand</label>
+                           <input type="text" id="aufwand" placeholder="z.B. 4-6 Std./Woche" class="bg-white mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                           <label for="dauer" class="block text-sm font-medium text-gray-700">Projektdauer</label>
+                           <input type="text" id="dauer" placeholder="z.B. 3 Monate" class="bg-white mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                     </div>
+                     <div>
+                        <label class="block text-sm font-medium text-gray-700">Projektdokumente (optional)</label>
+                        <div id="drop-zone" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md transition-colors">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                                        <span>Datei hochladen</span>
+                                        <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                    </a.0>
+                                    <p class="pl-1">oder per Drag & Drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PDF, DOCX, PNG, JPG bis 10MB</p>
+                            </div>
+                        </div>
+                        <div id="file-upload-list" class="mt-2 text-sm text-gray-700"></div>
+                     </div>
+                    <div class="text-right pt-4 border-t mt-4">
+                        <button type="button" id="cancel-modal-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-300 mr-2">Abbrechen</button>
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Projekt einreichen (MVP)</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Project Detail Modal -->
+        <div id="project-detail-modal-container" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">
+            <div id="project-detail-modal-content" class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-full overflow-y-auto p-6 md:p-8 relative">
+                <!-- Dynamic content will be injected here -->
+            </div>
+        </div>
+
+    </div>
+    <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
