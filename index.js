@@ -434,7 +434,7 @@ const switchView = (viewId) => {
  * @param {boolean} liked - True if the user liked the project, false otherwise.
  */
 const handleSwipe = (liked) => {
-    const topCard = document.querySelector('.project-card:last-of-type');
+    const topCard = document.querySelector('.project-card:first-of-type');
     const currentProject = projectsToSwipe[0];
     if (!topCard || !currentProject) return;
 
