@@ -13,7 +13,7 @@ const users = [
     department: 'Referat P2 - IT-Strategie',
     role: 'IT-Projektmanager',
     avatar: 'MM',
-    bio: 'Ich bin seit 5 Jahren im BMI und brenne dafür, unsere Prozesse durch innovative IT-Lösungen effizienter zu gestalten. Ich bin immer offen für neue Herausforderungen und interdisziplinäre Zusammenarbeit.',
+    bio: 'Ich bin seit 5 Jahren im BMDS und brenne dafür, unsere Prozesse durch innovative IT-Lösungen effizienter zu gestalten. Ich bin immer offen für neue Herausforderungen und interdisziplinäre Zusammenarbeit.',
     skills: ['Projektmanagement', 'Agile Methoden (Scrum)', 'IT-Infrastruktur', 'Cloud-Computing', 'Datenanalyse', 'PowerBI', 'Prozessoptimierung'],
     interests: ['Digitalisierung', 'KI', 'Neue Arbeitsweisen', 'Wissensmanagement'],
     availability: 'Gerne 4-6 Stunden pro Woche (aktuell noch Kapazität)'
@@ -75,6 +75,17 @@ const projects = [
     duration: '6 Monate',
     contactPerson: 'Thomas Klein',
     contactEmail: 'thomas.klein@bmi.bund.de'
+  },
+    {
+    id: 106,
+    title: "Weiterentwicklung der 'GovConnect' Prototypen-Plattform",
+    department: 'Referat für digitale Innovation',
+    description: 'Sei Teil des Teams, das GovConnect weiterentwickelt! Wir suchen motivierte Kolleg:innen, die uns helfen, die Plattform basierend auf Nutzerfeedback zu verbessern, neue Features zu konzipieren und die UI/UX zu optimieren.',
+    requiredSkills: ['UI/UX Design', 'JavaScript', 'TypeScript', 'User-Feedback-Analyse', 'Agile Entwicklung'],
+    effort: 'ca. 5-10 Stunden/Woche',
+    duration: 'laufend',
+    contactPerson: 'Jacqueline Klemm',
+    contactEmail: 'jacqueline.klemm@bmi.bund.de'
   }
 ];
 
