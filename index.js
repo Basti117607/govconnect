@@ -9,14 +9,14 @@
 const users = [
   {
     id: 1,
-    name: 'Max Mustermann',
-    department: 'Referat P2 - IT-Strategie',
-    role: 'IT-Projektmanager',
+    name: 'Maik Meier',
+    department: 'Bundeswehr',
+    role: 'Experte für Verwaltungstransformation',
     avatar: 'MM',
-    bio: 'Ich bin seit 5 Jahren im BMI und brenne dafür, unsere Prozesse durch innovative IT-Lösungen effizienter zu gestalten. Ich bin immer offen für neue Herausforderungen und interdisziplinäre Zusammenarbeit.',
-    skills: ['Projektmanagement', 'Agile Methoden (Scrum)', 'IT-Infrastruktur', 'Cloud-Computing', 'Datenanalyse', 'PowerBI', 'Prozessoptimierung'],
-    interests: ['Digitalisierung', 'KI', 'Neue Arbeitsweisen', 'Wissensmanagement'],
-    availability: 'Gerne 4-6 Stunden pro Woche (aktuell noch Kapazität)'
+    bio: 'Mit 20 Jahren Erfahrung in der Verwaltungstransformation bei der Bundeswehr suche ich nach neuen Herausforderungen, um mein Wissen einzubringen und innovative Projekte mitzugestalten. Ich bin besonders an Projekten interessiert, die auf eine moderne und digitale Verwaltung abzielen.',
+    skills: ['Verwaltungsprozesse', 'Prozessoptimierung', 'Transformation', 'Projektmanagement', 'Change Management', 'IT-Strategie'],
+    interests: ['Staatsmodernisierung', 'Digitalisierung', 'Behördenaufbau', 'Interministerielle Zusammenarbeit', 'Effizienzsteigerung'],
+    availability: 'Verfügbar für ca. 10 Stunden pro Woche'
   },
 ];
 
@@ -42,17 +42,6 @@ const projects = [
     duration: 'laufend',
     contactPerson: 'Jacqueline Klemm',
     contactEmail: 'jacqueline.klemm@bmi.bund.de'
-  },
-  {
-    id: 107,
-    title: 'Gender-Mainstreaming in der internen Kommunikation',
-    department: 'Gleichstellungsbeauftragte / Referat G1',
-    description: 'Wir überarbeiten unsere internen Kommunikationsrichtlinien, um eine gendersensible Sprache und inklusive Bildsprache sicherzustellen. Kreative Köpfe gesucht!',
-    requiredSkills: ['Redaktion', 'Kommunikation', 'Interkulturelle Kompetenz', 'Diversity & Inclusion', 'Layout'],
-    effort: 'Flexibel, ca. 2-3 Stunden/Woche',
-    duration: '2 Monate',
-    contactPerson: 'Dr. Lena Schmidt',
-    contactEmail: 'lena.schmidt@bmi.bund.de'
   },
   {
     id: 103,
