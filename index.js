@@ -13,7 +13,7 @@ const users = [
     department: 'Referat P2 - IT-Strategie',
     role: 'IT-Projektmanager',
     avatar: 'MM',
-    bio: 'Ich bin seit 5 Jahren im BMDS und brenne dafür, unsere Prozesse durch innovative IT-Lösungen effizienter zu gestalten. Ich bin immer offen für neue Herausforderungen und interdisziplinäre Zusammenarbeit.',
+    bio: 'Ich bin seit 5 Jahren im BMI und brenne dafür, unsere Prozesse durch innovative IT-Lösungen effizienter zu gestalten. Ich bin immer offen für neue Herausforderungen und interdisziplinäre Zusammenarbeit.',
     skills: ['Projektmanagement', 'Agile Methoden (Scrum)', 'IT-Infrastruktur', 'Cloud-Computing', 'Datenanalyse', 'PowerBI', 'Prozessoptimierung'],
     interests: ['Digitalisierung', 'KI', 'Neue Arbeitsweisen', 'Wissensmanagement'],
     availability: 'Gerne 4-6 Stunden pro Woche (aktuell noch Kapazität)'
@@ -76,7 +76,7 @@ const projects = [
     contactPerson: 'Thomas Klein',
     contactEmail: 'thomas.klein@bmi.bund.de'
   },
-    {
+  {
     id: 106,
     title: "Weiterentwicklung der 'GovConnect' Prototypen-Plattform",
     department: 'Referat für digitale Innovation',
@@ -136,7 +136,7 @@ const renderPills = (items) => {
  * Renders the dashboard view.
  */
 const renderDashboard = () => {
-    const remainingProjects = projects.length - swipedProjects.length;
+    const remainingProjects = projectsToSwipe.length;
     dashboardView.innerHTML = `
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900">Willkommen zurück, ${currentUser.name}!</h1>
@@ -311,6 +311,9 @@ const renderMatches = () => {
                 <a href="mailto:${project.contactEmail}?subject=Interesse am Projekt: ${encodeURIComponent(project.title)}" class="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors">
                     Kontakt aufnehmen
                 </a>
+                <button data-project-id="${project.id}" class="remove-from-matches-btn bg-red-100 text-red-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-red-200 transition-colors">
+                    Entfernen
+                </button>
             </div>
         `;
         matchesList.appendChild(matchItem);
@@ -496,6 +499,25 @@ const handleReconsiderProject = (projectId) => {
  * Moves a disliked project directly to the interested list.
  * @param {number} projectId The ID of the project to like.
  */
+/**
+ * Moves a project from the interested list back to the swipe queue.
+ * @param {number} projectId The ID of the project to remove from matches.
+ */
+const handleRemoveFromMatches = (projectId) => {
+    const projectIndex = interestedProjects.findIndex(p => p.id === projectId);
+    if (projectIndex > -1) {
+        const [project] = interestedProjects.splice(projectIndex, 1);
+        projectsToSwipe.unshift(project); // Add to the beginning of the swipe queue
+
+        // Re-render views
+        renderMatches();
+        renderProjectCards();
+
+        // Optional: Show a confirmation
+        // alert(`Das Projekt "${project.title}" wurde in die "Projekte finden"-Liste verschoben.`);
+    }
+};
+
 const handleLikeProjectFromReconsider = (projectId) => {
     const projectIndex = dislikedProjects.findIndex(p => p.id === projectId);
     if (projectIndex === -1) return;
@@ -581,6 +603,14 @@ const init = () => {
         if (viewDetailsBtn) {
             const projectId = parseInt(viewDetailsBtn.dataset.projectId, 10);
             showProjectDetailsModal(projectId);
+            return;
+        }
+
+        // Matches view "remove" button
+        const removeFromMatchesBtn = target.closest('.remove-from-matches-btn');
+        if (removeFromMatchesBtn) {
+            const projectId = parseInt(removeFromMatchesBtn.dataset.projectId, 10);
+            handleRemoveFromMatches(projectId);
             return;
         }
     });
