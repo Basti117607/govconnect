@@ -21,8 +21,19 @@ const users = [
 ];
 
 const projects = [
-    {
+  {
     id: 101,
+    title: 'Aufbau: Recruiting-Prozess für das Bundesministerium für Digitalisierung (BMDS)',
+    department: 'Aufbaustab BMDS (Initiative des BMI)',
+    description: 'Wir gründen das neue Bundesministerium für Digitalisierung und Staatsmodernisierung (BMDS) und benötigen dringend Unterstützung! Gesucht werden Expert:innen für die schnelle Konzeption und Implementierung eines innovativen, digitalen und effizienten Recruiting-Prozesses.',
+    requiredSkills: ['Recruiting', 'Verwaltungserfahrung', 'Prozessoptimierung', 'Digitalisierung', 'Projektmanagement'],
+    effort: 'Ca. 10 Stunden/Woche',
+    duration: '2 Monate',
+    contactPerson: 'Frau Huber',
+    contactEmail: 'frau.huber@bmi.bund.de'
+  },
+    {
+    id: 102,
     title: "Weiterentwicklung der 'GovConnect' Prototypen-Plattform",
     department: 'Referat für digitale Innovation',
     description: 'Sei Teil des Teams, das GovConnect weiterentwickelt! Wir suchen motivierte Kolleg:innen, die uns helfen, die Plattform basierend auf Nutzerfeedback zu verbessern, neue Features zu konzipieren und die UI/UX zu optimieren.',
@@ -33,7 +44,7 @@ const projects = [
     contactEmail: 'jacqueline.klemm@bmi.bund.de'
   },
   {
-    id: 102,
+    id: 107,
     title: 'Gender-Mainstreaming in der internen Kommunikation',
     department: 'Gleichstellungsbeauftragte / Referat G1',
     description: 'Wir überarbeiten unsere internen Kommunikationsrichtlinien, um eine gendersensible Sprache und inklusive Bildsprache sicherzustellen. Kreative Köpfe gesucht!',
@@ -86,6 +97,17 @@ const projects = [
     duration: '3 Monate',
     contactPerson: 'Anna Beispiel',
     contactEmail: 'anna.beispiel@bmi.bund.de'
+  },
+    {
+    id: 107,
+    title: 'Gender-Mainstreaming in der internen Kommunikation',
+    department: 'Gleichstellungsbeauftragte / Referat G1',
+    description: 'Wir überarbeiten unsere internen Kommunikationsrichtlinien, um eine gendersensible Sprache und inklusive Bildsprache sicherzustellen. Kreative Köpfe gesucht!',
+    requiredSkills: ['Redaktion', 'Kommunikation', 'Interkulturelle Kompetenz', 'Diversity & Inclusion', 'Layout'],
+    effort: 'Flexibel, ca. 2-3 Stunden/Woche',
+    duration: '2 Monate',
+    contactPerson: 'Dr. Lena Schmidt',
+    contactEmail: 'lena.schmidt@bmi.bund.de'
   }
 ];
 
