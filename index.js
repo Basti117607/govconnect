@@ -21,16 +21,16 @@ const users = [
 ];
 
 const projects = [
-  {
+    {
     id: 101,
-    title: 'Digitalisierung: Workflow-Optimierung im Referat Z1',
-    department: 'Referat Z1 - Organisation und Prozesse',
-    description: 'Wir suchen Unterstützung bei der Analyse und Optimierung interner Verwaltungsabläufe zur Vorbereitung auf die E-Akte. Fokus auf Effizienzsteigerung und Nutzerfreundlichkeit.',
-    requiredSkills: ['Prozessanalyse', 'Change Management', 'MS Visio', 'Kommunikation', 'Workflow-Design'],
-    effort: 'Ca. 4-6 Stunden/Woche',
-    duration: '3 Monate',
-    contactPerson: 'Anna Beispiel',
-    contactEmail: 'anna.beispiel@bmi.bund.de'
+    title: "Weiterentwicklung der 'GovConnect' Prototypen-Plattform",
+    department: 'Referat für digitale Innovation',
+    description: 'Sei Teil des Teams, das GovConnect weiterentwickelt! Wir suchen motivierte Kolleg:innen, die uns helfen, die Plattform basierend auf Nutzerfeedback zu verbessern, neue Features zu konzipieren und die UI/UX zu optimieren.',
+    requiredSkills: ['UI/UX Design', 'JavaScript', 'TypeScript', 'User-Feedback-Analyse', 'Agile Entwicklung'],
+    effort: 'ca. 5-10 Stunden/Woche',
+    duration: 'laufend',
+    contactPerson: 'Jacqueline Klemm',
+    contactEmail: 'jacqueline.klemm@bmi.bund.de'
   },
   {
     id: 102,
@@ -76,16 +76,16 @@ const projects = [
     contactPerson: 'Thomas Klein',
     contactEmail: 'thomas.klein@bmi.bund.de'
   },
-  {
+    {
     id: 106,
-    title: "Weiterentwicklung der 'GovConnect' Prototypen-Plattform",
-    department: 'Referat für digitale Innovation',
-    description: 'Sei Teil des Teams, das GovConnect weiterentwickelt! Wir suchen motivierte Kolleg:innen, die uns helfen, die Plattform basierend auf Nutzerfeedback zu verbessern, neue Features zu konzipieren und die UI/UX zu optimieren.',
-    requiredSkills: ['UI/UX Design', 'JavaScript', 'TypeScript', 'User-Feedback-Analyse', 'Agile Entwicklung'],
-    effort: 'ca. 5-10 Stunden/Woche',
-    duration: 'laufend',
-    contactPerson: 'Jacqueline Klemm',
-    contactEmail: 'jacqueline.klemm@bmi.bund.de'
+    title: 'Digitalisierung: Workflow-Optimierung im Referat Z1',
+    department: 'Referat Z1 - Organisation und Prozesse',
+    description: 'Wir suchen Unterstützung bei der Analyse und Optimierung interner Verwaltungsabläufe zur Vorbereitung auf die E-Akte. Fokus auf Effizienzsteigerung und Nutzerfreundlichkeit.',
+    requiredSkills: ['Prozessanalyse', 'Change Management', 'MS Visio', 'Kommunikation', 'Workflow-Design'],
+    effort: 'Ca. 4-6 Stunden/Woche',
+    duration: '3 Monate',
+    contactPerson: 'Anna Beispiel',
+    contactEmail: 'anna.beispiel@bmi.bund.de'
   }
 ];
 
